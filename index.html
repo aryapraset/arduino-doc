@@ -20,6 +20,7 @@
             <header>Apa itu Arduino ?</header>
             <article>
                 <p>
+                    ::marker
                     Arduino adalah sebuah platform elektronik yang memungkinkan siapa pun, 
                     dari pemula hingga ahli, untuk merancang dan mengembangkan berbagai proyek elektronik interaktif. 
                     Dirancang dengan tujuan membuat pemrograman dan pengembangan perangkat keras menjadi lebih mudah diakses, 
@@ -46,9 +47,84 @@
                     dan perangkat digital lainnya. 
                     Berikut adalah gambaran tentang digital I/O dalam Arduino:
                 </p>
-                <p></p>
+                <p>
+                    <ul>
+                        <li>Output Digital, melibatkan pengendalian perangkat yang memiliki dua kondisi: NYALA (HIGH) dan MATI (LOW)
+                            <p>Fungsi-fungsi:</p>
+                            <dd>pinMode(pin, mode): Mengatur mode pin sebagai INPUT atau OUTPUT.</dd>
+                            <dd>digitalWrite(pin, value): Menulis nilai digital ke pin. Nilai bisa HIGH (5V atau NYALA) atau LOW (0V atau MATI).</dd>
+                            <pre>
+                            <code>
+                                //Contoh - LED Berkedip:
+                                void setup() {
+                                pinMode(13, OUTPUT); // Mengatur pin 13 sebagai output
+                              }
+                              
+                              void loop() {
+                                digitalWrite(13, HIGH); // Menyalakan LED
+                                delay(1000); // Tunggu 1 detik
+                                digitalWrite(13, LOW); // Matikan LED
+                                delay(1000); // Tunggu 1 detik
+                              }
+                            </code>
+                            </pre>
+                        </li>
+                        <li>Input Digital, Input digital melibatkan pembacaan status perangkat digital, seperti saklar atau tombol.
+                            <p>Fungsi-fungsi:</p>
+                            <dd>digitalRead(pin): Membaca status digital dari pin. Mengembalikan HIGH atau LOW.</dd>
+                            <pre>
+                            <code>
+                                //Contoh - Input Tombol:
+                                const int buttonPin = 2; // Tombol terhubung ke pin 2
+                                int buttonState = 0;     // Variabel untuk menyimpan status tombol
+                                    
+                                void setup() {
+                                    pinMode(buttonPin, INPUT); // Mengatur pin 2 sebagai input
+                                }
+                                    
+                                void loop() {
+                                    buttonState = digitalRead(buttonPin); // Membaca status tombol
+                                    if (buttonState == HIGH) {
+                                        // Tombol ditekan, lakukan sesuatu
+                                    }
+                                }
+                            </code>
+                            </pre>
+                        </li>
+                        <li>Resistor Pull-up dan Pull-down, Saat menggunakan tombol, umumnya menggunakan resistor pull-up atau pull-down untuk memastikan pembacaan yang stabil. Resistor pull-up menghubungkan pin input ke 5V, dan resistor pull-down menghubungkannya ke ground. Hal ini mencegah keadaan "mengambang" saat tombol tidak ditekan.
+                            <p>Fungsi-fungsi</p>
+                            <dd>digitalWrite(pin, value): Mengatur mode resistor pull-up atau pull-down. value bisa HIGH, LOW, atau INPUT_PULLUP.</dd>
+                            <pre>
+                            <code>
+                                //Contoh - Tombol dengan Resistor Pull-up:
+                                const int buttonPin = 2;
+                                int buttonState = 0;
+
+                                void setup() {
+                                    pinMode(buttonPin, INPUT_PULLUP); // Menggunakan resistor pull-up internal
+                                }
+
+                                void loop() {
+                                buttonState = digitalRead(buttonPin);
+                                if (buttonState == LOW) {
+                                    // Tombol ditekan, lakukan sesuatu
+                                    }
+                                }       
+                            </code>
+                            </pre>
+                        </li>
+                    </ul>
+                </p>
             </article>
         </section>
+
+        <section id="analog" class="main-section">
+            
+        </section>
+
+        <section id="sketch" class="main-section"></section>
+
+        <section id="variable" class="main-section"></section>
     </main>
 </body>
 </html>
